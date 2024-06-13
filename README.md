@@ -1,2 +1,2 @@
 # personal-website
-My personal website portfolio, found at www.calebwarner.xyz (currently not up).
+My personal website portfolio, found at http://www.calebwarner.xyz
