@@ -10,10 +10,10 @@ FROM openjdk:17-alpine
 WORKDIR /app
 COPY --from=build /app/target/calebs-website.jar ./calebs-website.jar
 VOLUME /certs
-EXPOSE 8080
-CMD ["java", "-Djavax.net.ssl.keyStore=/certs/fullchain.pem", "-Djavax.net.ssl.keyStorePassword=${KEYSTORE_PASSWORD}", "-Djavax.net.ssl.trustStore=/certs/fullchain.pem", "-Djavax.net.ssl.trustStorePassword=${TRUSTSTORE_PASSWORD}", "-jar", "./calebs-website.jar"]
+EXPOSE 443
+ENTRYPOINT ["java", "-Djavax.net.ssl.keyStore=/certs/keystore.p12", "-Djavax.net.ssl.keyStorePassword=${KEYSTORE_PASSWORD}", "-Djavax.net.ssl.trustStore=/certs/cacerts", "-Djavax.net.ssl.trustStorePassword=${TRUSTSTORE_PASSWORD}", "-jar", "./calebs-website.jar"]
 
-
+#CMD ["java", "-jar", "./calebs-website.jar"]
 
 # # Local machine:
 #    FROM openjdk:17
